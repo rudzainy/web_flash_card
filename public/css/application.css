@@ -3,7 +3,71 @@
   width: 600px;
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
+  font-size: .9em;
+  line-height: 1.5em;
 }
+
+table {
+  width: 100%;
+}
+
+h1 {
+  text-align: center;
+  color: #307d7e;
+}
+
 th {
   text-align: left;
+  padding: 10px;
+  border-bottom: 3px solid #fff;
+  background-color: #307d7e;
+  color: white;
+}
+
+td {
+  padding: 10px;
+  background-color: #afdcec;
+  border-bottom: 2px solid #fff;
+}
+
+textarea {
+  resize: none;
+  width: 100%;
+}
+
+.author {
+  font-family: serif;
+  font-style: italic;
+  font-size: .9em;
+}
+
+.post {
+  width: 70%;
+}
+
+.timestamp {
+  font-size: .85em;
+  width: 30%;
+}
+
+.new_post_button {
+  text-align: right;
+  padding: 10px;
+}
+
+button, .button {
+  padding: 10px;
+  border-radius: .2rem;
+  background-color: #307d7e;
+  border: none;
+  color: white;
+  font-size: .85em;
+}
+
+a, a:visited {
+  color: #307d7e;
+}
+
+a:hover, a:active {
+  color: #736aff
 }

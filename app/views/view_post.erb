@@ -1,0 +1,30 @@
+<div class="container">
+  <h1>View post</h1>
+  <p><%= @error %></p>
+
+  <table>
+    <tr>
+      <th><%= @post.title %></th>
+    </tr>
+    <tr>
+      <td class="author">by <%= @post.author %></td>
+    </tr>
+    <tr>
+      <td><%= @post.content %></td>
+    </tr>
+    <tr>
+      <td>
+        Tags: <% @post.tags.each do |tag| %>
+        <%= tag.name %>&nbsp;
+        <% end %>
+      </td>
+      </td>
+    <tr>
+      <td align="right">
+
+  <a href="/edit_post/<%= @post.id %>"><button>Edit</button></a>
+        <a href="../../"><button>Main Page</button></a>
+      </td>
+    </tr>
+  </table>
+</div>
