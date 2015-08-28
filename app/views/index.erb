@@ -1,17 +1,17 @@
 <div class="container">
-  <h1>Welcome to le Blog!</h1>
+  <h1>Welcome to waterbnb!</h1>
   <p><%= @error %></p>
-  <div class="new_post_button"><a href="/new_post"><button>Create new post</button></a></div>
+  <div class="new_property_button"><a href="/new_property"><button>Create new property</button></a></div>
   <table>
     <tr>
-      <th class="post">Post</th>
+      <th class="property">Properties</th>
       <th>Last updated</th>
     </tr>
-    <% @posts = Post.all.order(updated_at: :desc) %>
-    <% @posts.each do |post| %>
+    <% @properties = Property.all.order(updated_at: :desc) %>
+    <% @properties.each do |property| %>
     <tr>
-      <td><a href="/view_post/<%= post.id %>"><%= post.title %></a><br><span class="author">by <%= post.author %></span></td>
-      <td class="timestamp"><%= post.updated_at %></td>
+      <td><a href="/view_property/<%= property.id %>"><%= property.title %></a><br><span class="user">by <%= property.users.name %></span></td>
+      <td class="timestamp"><%= property.updated_at %></td>
     </tr>
     <% end %>
     <tr>
