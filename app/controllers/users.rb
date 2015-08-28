@@ -13,10 +13,10 @@ post '/login' do
     @user = User.find_by email: @email
     session[:user_id] = @user.id
     @flag = "Cheers #{@user.name}!" 
-    redirect to '/'
+    erb :index
   else
     @flag = "Invalid email or password!"
-    redirect to '/login'
+    erb :login
   end
 end
 
@@ -34,11 +34,11 @@ post '/signup' do
 
   if User.check_duplicate(@email) == false
     @flag = "The email has been registered to another account!"
-    redirect to '/signup'
+    erb :signup
   else
     @user = User.create(name: @name, email: @email, password: @password)
     @flag = "Account successfully created! You may log in now."
-    redirect to '/login'
+    erb :login
   end
 end
 
@@ -47,7 +47,7 @@ get '/secret' do
     @user = User.find(session[:user_id])
     erb :secret
   else
-    redirect '/sign_in'
+    erb :login
   end
 end
 

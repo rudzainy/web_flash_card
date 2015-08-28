@@ -1,16 +1,15 @@
 <div class="container">
   <h1>View tags</h1>
-  <p><%= @error %></p>
+  <p><%= @flag %></p>
 
   <table>
     <tr>
       <th>Tag: <%= @tag.name %></th>
     </tr>
-    <% @tag.posts.each do |post| %>
+    <% @tag.properties.each do |property| %>
     <tr>
       <td>
-        <%= post.title %><br>
-        <span class="author">by <%= post.author %></span>
+        <%= property.title %><br>
       </td>
     </tr>
     <% end %>

@@ -12,13 +12,13 @@
   <table>
     <tr>
       <th class="property">Properties</th>
-      <th>Last updated</th>
+      <th>Price</th>
     </tr>
     <% @properties = Property.all.order(updated_at: :desc) %>
     <% @properties.each do |property| %>
     <tr>
-      <td><a href="/view_property/<%= property.id %>"><%= property.title %></a><br><span class="user">by <%= property.users.name %></span></td>
-      <td class="timestamp"><%= property.updated_at %></td>
+      <td><a href="/view_property/<%= property.id %>"><%= property.title %></a></td>
+      <td class="timestamp">RM<%= property.price %></td>
     </tr>
     <% end %>
     <tr>
