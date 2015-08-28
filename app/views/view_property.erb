@@ -4,7 +4,7 @@
 
   <table>
     <tr>
-      <th><%= @property.title %><div align="right">RM<%= @property.price %></span></th>
+      <th><%= @property.title %><div align="right">RM<%= @property.price %></div></th>
     </tr>
     <tr>
       <td><%= @property.description %></td>
@@ -18,11 +18,14 @@
         <%= tag.name %>&nbsp;
         <% end %>
       </td>
-      </td>
+    </tr>
     <tr>
       <td align="right">
         <% if @property.user_id == @current_user.id %>
         <a href="/edit_property/<%= @property.id %>"><button>Edit</button></a>
+        <% end %>
+        <% if @property.user_id != @current_user.id %>
+        <a href="../../book_property/<%= @property.id %>"><button>Book Now</button></a>
         <% end %>
         <a href="../../"><button>Main Page</button></a>
       </td>

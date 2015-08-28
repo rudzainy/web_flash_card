@@ -43,10 +43,14 @@ post '/signup' do
   end
 end
 
+# 
 get '/secret' do
   if session[:user_id]
-    @user = User.find(session[:user_id])
-    @list = @user.properties
+    current_user
+    # @user = User.find(session[:user_id])
+    @property_list = @current_user.properties
+    @booking_list = @current_user.bookings
+byebug
     erb :secret
   else
     erb :login

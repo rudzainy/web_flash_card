@@ -15,12 +15,12 @@ get '/edit_property/:id' do
   erb :edit_property
 end
 
-get '/delete_post/:id' do
+get '/delete_property/:id' do
 
   @property = Property.find(params[:id])
   Property.destroy(@property)
 
-  erb :delete_post
+  erb :delete_property
 end
 
 post '/new_property' do
