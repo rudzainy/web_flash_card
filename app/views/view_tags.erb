@@ -9,7 +9,7 @@
     <% @tag.properties.each do |property| %>
     <tr>
       <td>
-        <%= property.title %><br>
+        <a href="../view_property/<%= property.id %>"><%= property.title %></a><br>
       </td>
     </tr>
     <% end %>

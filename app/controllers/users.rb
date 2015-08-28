@@ -50,7 +50,7 @@ get '/secret' do
     # @user = User.find(session[:user_id])
     @property_list = @current_user.properties
     @booking_list = @current_user.bookings
-byebug
+
     erb :secret
   else
     erb :login

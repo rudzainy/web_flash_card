@@ -21,10 +21,10 @@
     </tr>
     <tr>
       <td align="right">
-        <% if @property.user_id == @current_user.id %>
+        <% if @property.user_id == session[:user_id] %>
         <a href="/edit_property/<%= @property.id %>"><button>Edit</button></a>
         <% end %>
-        <% if @property.user_id != @current_user.id %>
+        <% if @property.user_id != session[:user_id] %>
         <a href="../../book_property/<%= @property.id %>"><button>Book Now</button></a>
         <% end %>
         <a href="../../"><button>Main Page</button></a>

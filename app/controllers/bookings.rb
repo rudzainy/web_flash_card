@@ -21,10 +21,24 @@ post '/book_property/:id' do
 
   @new_booking.save
   if @new_booking.save
-  	@flag = "Your property has been created!"
+  	@flag = "Booking successful!"
     erb :index
   else
   	@flag = "Booking failed!"
     erb :index
   end
+end
+
+get '/cancel_booking/:id' do
+
+  current_user
+  @booking = Booking.find(params[:id])
+  Booking.destroy(@booking)
+
+  # @user = User.find(session[:user_id])
+  @property_list = @current_user.properties
+  @booking_list = @current_user.bookings
+
+  @flag = "The booking has been cancelled!"
+  erb :secret
 end

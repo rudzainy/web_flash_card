@@ -18,6 +18,12 @@ end
 get '/delete_property/:id' do
 
   @property = Property.find(params[:id])
+  all_bookings = Booking.where(property_id: @property.id)
+  all_bookings.each do |booking|
+    @booking = Booking.find(booking.id)
+    Booking.destroy(@booking)
+  end
+
   Property.destroy(@property)
 
   erb :delete_property
