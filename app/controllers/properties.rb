@@ -5,6 +5,7 @@ end
 get '/view_property/:id' do
 
   @property = Property.find(params[:id])
+  current_user
   erb :view_property
 end
 
@@ -23,16 +24,17 @@ get '/delete_post/:id' do
 end
 
 post '/new_property' do
-
+  
+  current_user
   @title = params[:title]
   @description = params[:description]
-  @user = current_user
+  @user_id = @current_user.id
   @price = params[:price]
   @bed = params[:bed]
   @bathroom = params[:bathroom]
   @tags = params[:tags].split(", ")
 
-  @new_property = Property.new(title: @title, description: @description, bed: @bed, bathroom: @bathroom, price: @price)
+  @new_property = Property.new(title: @title, description: @description, bed: @bed, bathroom: @bathroom, price: @price, user_id: @user_id)
 
   @new_property.save
   if @new_property.save
@@ -42,38 +44,42 @@ post '/new_property' do
       @tag.properties << @new_property
     end
 
-    @user.properties << @new_property
+    @current_user.properties << @new_property
 
+    @flag = "Your property has been created!"
     erb :index
   else
-    @error = "Fields cannot be empty!"
+    @flag = "Fields cannot be empty!"
     erb :new_property
   end
 end
 
 post '/edit_property/:id' do
 
+  current_user
   @property = Property.find(params[:id])
   @property.title = params[:title]
   @property.description = params[:description]
-  @owner = current_user.id
+  @property.user_id = @current_user.id
   @property.price = params[:price]
   @property.bed = params[:bed]
   @property.bathroom = params[:bathroom]
   @tags = params[:tags].split(", ")
 
-  @tags.each do |tag|
-    if Tag.find_by(name: tag) == nil
-      @tag = Tag.find_or_create_by(name: tag)
-      @tag.posts << @property
-    end
-  end
-
   @property.save
   if @property.save
+
+    @tags.each do |tag|
+      @tag = Tag.find_or_create_by(name: tag)
+      if @tag != nil
+        @tag.properties << @property
+      end
+    end
+
+    @flag = "Property was edited successfully!"
     erb :index
   else
-    @error = "Fields cannot be empty!"
+    @flag = "Fields cannot be empty!"
     erb :edit_property
   end
 end

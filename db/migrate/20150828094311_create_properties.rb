@@ -6,6 +6,7 @@ class CreateProperties < ActiveRecord::Migration
   		t.integer :price
   		t.integer :bed
   		t.integer :bathroom
+      t.integer :user_id
   		t.timestamps null: false
   	end
   end

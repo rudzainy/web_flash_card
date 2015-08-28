@@ -1,0 +1,34 @@
+<div class="container">
+  <h1>Edit property</h1>
+  <p><%= @flag %></p>
+
+  <form name="edit_property/<%= @property.id %>" method="post">
+    <table>
+      <tr>
+        <td width="70px">Title:</td>
+        <td>
+          <input type="text" name="title" value="<%= @property.title %>">
+        </td>
+      </tr>
+      <tr>
+        <td width="70px">Description:</td>
+        <td>
+          <textarea name="description" rows="10"><%= @property.description %></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">Price: <input type="text" name="price" value="<%= @property.price %>" size="5"> Beds: <input type="text" name="bed" value="<%= @property.bed %>" size="5"> Bathrooms: <input type="text" name="bathroom" value="<%= @property.bathroom %>" size="5"></td>
+      </tr>
+      <tr>
+        <td width="70px">Tags:</td>
+        <td>
+          Enter some tags, saperated by commas<br>
+          <input type="text" name="tags" size="67" value="<% @property.tags.each do |tag| %><%= tag.name %>, <% end %>">
+        </td>
+      </tr>
+    </table>
+    <input type="submit" value="Edit property" class="button">
+  </form><br>
+  <a href="/delete_property/<%= @property.id %>"><button>Delete property</button></a>
+  <a href="../../"><button>Main Page</button></a>
+</div>

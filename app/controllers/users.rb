@@ -12,6 +12,7 @@ post '/login' do
   if User.authenticate(@email, @password)
     @user = User.find_by email: @email
     session[:user_id] = @user.id
+    current_user
     @flag = "Cheers #{@user.name}!" 
     erb :index
   else
@@ -45,14 +46,16 @@ end
 get '/secret' do
   if session[:user_id]
     @user = User.find(session[:user_id])
+    @list = @user.properties
     erb :secret
   else
     erb :login
   end
 end
 
-post '/logout' do
+get '/logout' do
   session[:user_id] = nil
-  redirect to '/'
+  @flag = "You are successfully logged out."
+  erb :index
 end
 
