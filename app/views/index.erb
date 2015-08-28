@@ -1,7 +1,14 @@
 <div class="container">
   <h1>Welcome to waterbnb!</h1>
-  <p><%= @error %></p>
-  <div class="new_property_button"><a href="/new_property"><button>Create new property</button></a></div>
+  <p><%= @flag %></p>
+  <div class="new_property_button">
+  <% if session[:user_id] %>
+    <a href="/new_property"><button>Create New Property</button></a>
+  <% else %>
+    <a href="/login"><button>Log In</button></a>
+    <a href="/signup"><button>Sign Up</button></a>
+    <% end %>
+  </div>
   <table>
     <tr>
       <th class="property">Properties</th>

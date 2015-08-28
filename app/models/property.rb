@@ -3,9 +3,9 @@ class Property < ActiveRecord::Base
   has_many :poperty_tags
   has_many :tags, through: :property_tags
   has_one :booking
-  has_one :user, through: :bookings
-  belongs_to :user
+  has_many :user, through: :bookings
 
   validates :description, :presence => true
-  validates :name, :presence => true
+  validates :title, :presence => true
+  validates :price, :presence => true
 end

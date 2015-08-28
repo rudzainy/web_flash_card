@@ -1,7 +1,8 @@
 <div class="container" align="center">
-  <h1>Register new account</h1>
+  <h1>Sign up for a new account</h1>
+  <p><%= @flag %></p>
 
-  <form action='/register' method='post'>
+  <form action='/signup' method='post'>
     <table width="250px">
       <tr height="50px">
         <td width="100px">Name:</td>
@@ -13,7 +14,7 @@
       </tr>
       <tr height="50px">
         <td width="100px">Password:</td>
-        <td><input name='password' type='text'></td>
+        <td><input name='password' type='password'></td>
       </tr>
       <tr height="50px">
         <td colspan = "2" align="right"><input type="submit" name="register"></td>
